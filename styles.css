@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+/* Root Variables */
+
+:root {
+  --primary-color: #3498db; /* Primary color */
+  --secondary-color: #2ecc71; /* Secondary color */
+  --background-color: #f9f9f9; /* Background color */
+  --text-color: #333; /* Default text color */
+  --ff-Rubik:"Rubik", serif; /* Base font family */
+  --ff-Raleway:"Raleway", sans-serif; /* Base font family */
+  --base-padding: 1rem;
+
+  /* Gradient */
+  --primary-gradient: linear-gradient(180deg, #1abc9c, #3498db);;
+  --bkg-gradient: radial-gradient(circle, #ffffff, #f5f5f5);
+  --midnightBlue-gradient: linear-gradient(45deg, #2c3e50, #3498db);;
+
+  /* Responsive Font Sizes */
+  --font-size-small: clamp(0.875rem, 2vw, 1rem);
+  --font-size-medium: clamp(1rem, 2.5vw, 1.25rem);
+  --font-size-large: clamp(1.5rem, 3vw, 1.5rem);
+}
+
+h1, h3{
+  font-family: var(--ff-Rubik);
+  font-size: var(--font-size-large);
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+h3{
+  font-size: var(--font-size-medium);
+  margin-bottom: 10px;
+}
+p{
+  margin-bottom: 10px;
+}
+time{
+  font-family: var(--ff-Rubik);
+  font-weight: 300;
+  font-size: var(--font-size-small);
+  
+}
+
+/* Responsive Design and Hover Transition for Event Cards */
+.timeline-section{
+  padding: 3rem;
+  margin: 0 auto;
+  overflow: hidden;
+
+}
+@media (max-width: 768px) {
+  .timeline-section{
+    padding: 1.5rem;
+  
+  }
+  .timeline-container {
+    padding: 20px;
+  }
+
+  .timeline-event {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .timeline-event:nth-child(odd)::before,
+  .timeline-event:nth-child(even)::before {
+    width: 50%;
+  }
+
+  .timeline-event:nth-child(even) {
+    left: 0;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .timeline-container::before {
+    left: 10px; /* Align the line to the left for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-container {
+    padding: 15px;
+  }
+
+  .timeline-event {
+    padding: 10px;
+    font-size: var(--font-size-small);
+  }
+
+  .icon i {
+    font-size: 30px; /* Adjust icon size for small screens */
+    
+  }
+}
+
+/* Event Card Hover Transitions */
+.event-card {
+  background: var(--background-color);
+  padding: 20px;
+  width: 100%;
+  border-radius: 8px;
+  position: relative;
+  transform: rotate(-2deg);
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover effect */
+  color: var(--secondary-color);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+
+.event-card:hover {
+  transform: rotate(0) scale(1.05); /* Rotate back to normal and slightly scale up */
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 6px -1px, rgba(0, 0, 0, 0.1) 0px 2px 4px -1px;
+  cursor: pointer;
+}
+
+.event-card::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  top: -10px;
+  left: 0;
+  transform: skewY(-3deg);
+  z-index: 1;
+  transition: all 0.3s ease-in-out; /* Smooth transition for background highlight */
+}
+
+.event-card:hover::after {
+  background: rgba(255, 255, 255, 0.2); /* Intensify highlight effect on hover */
+}
+
+.icon i {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #ddd;
+  transition: transform 0.3s ease-in-out; /* Smooth transition for icon */
+}
+
+.icon i:hover {
+  transform: scale(1.2); /* Scale up the icon slightly on hover */
+  color: var();
+}
+
+/* Responsive Design for Timeline */
+
+@media (max-width: 768px) {
+  .timeline-container {
+    padding: 20px;
+    overflow: hidden;
+  }
+
+  .timeline-event {
+    width: 100%; /* Full width on smaller screens */
+    padding: 15px;
+    text-align: left; /* Ensure proper alignment */
+    justify-content: flex-start;
+  }
+
+  .timeline-event:nth-child(odd)::before,
+  .timeline-event:nth-child(even)::before {
+    width: 15%; /* Shorten connector width for small screens */
+  }
+
+  .timeline-event:nth-child(odd),
+  .timeline-event:nth-child(even) {
+    left: 0; /* Align events to the left */
+  }
+
+  .timeline-container::before {
+    left: 10px; /* Shift timeline line to the left */
+    transform: none; /* Remove unnecessary transform on smaller screens */
+  }
+
+  .icon i {
+    font-size: 30px; /* Adjust icon size for small screens */
+  }
+
+  .event-card {
+    padding: 15px; /* Reduce padding */
+    font-size: var(--font-size-small); /* Adjust font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-container {
+    padding: 10px; /* Further reduce padding */
+  }
+
+  .timeline-event {
+    padding: 10px;
+  }
+
+  .icon i {
+    font-size: 25px; /* Smaller icon for extra-small screens */
+  }
+
+  .event-card {
+    font-size: calc(var(--font-size-small) - 2px); /* Slightly smaller text */
+    padding: 10px; /* Compact padding for smaller devices */
+  }
+}
